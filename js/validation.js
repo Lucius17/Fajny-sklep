@@ -12,6 +12,20 @@ validation
 	},
 	{
 		rule: "email"
+	},
+	{
+		validator: (value) => () => {
+			return fetch("validateEmail.php?email=" +encodeURIComponent(value).then(function(response){
+				return response.json();
+			}
+			))
+			.then(function(json){
+				return json.available;
+
+			});
+
+		},
+		errorMessage: "email jest już zajęty"
 	}
 ])
 	.addField("#password",[
