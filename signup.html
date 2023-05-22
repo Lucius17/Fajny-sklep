@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+		/>
+		<link rel="stylesheet" href="index.css" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script
+			src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"
+			defer
+		></script>
+		<script src="js/validation.js" defer></script>
+		<title>Rejestracja</title>
+	</head>
+	<body>
+		<div class="box">
+			<h1>Rejestracja</h1>
+			<form action="signup.php" method="post" id="signup">
+				<div>
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" />
+				</div>
+				<div>
+					<label for="name">Imię</label>
+					<input type="text" id="name" name="name" />
+				</div>
+				<div>
+					<label for="name">Hasło</label>
+					<input type="password" id="password" name="password" />
+				</div>
+				<div>
+					<label for="name">Powtórz hasło</label>
+					<input
+						type="password"
+						id="password_confirmation"
+						name="password_confirmation"
+					/>
+				</div>
+				<button>Zarejestruj się</button>
+			</form>
+		</div>
+	</body>
+</html>
