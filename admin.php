@@ -25,14 +25,14 @@
 						<a class="nav-link" href="?action=orders">Zamówienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Produkty</a>
+						<a class="nav-link" href="?action=products">Produkty</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Klienci</a>
+						<a class="nav-link" href="?action=clients">Klienci</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="#">Ustawienia</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
