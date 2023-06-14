@@ -130,6 +130,7 @@
 				?>
 				<div class="container">
 					<h1>Produkty</h1>
+					<button type="button" class="btn btn-success">Dodaj produkt</button>
 					<form class="mt-4">
 						<div class="row">
 							<div class="col-md-3">
