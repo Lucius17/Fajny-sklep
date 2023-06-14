@@ -141,6 +141,10 @@
 								<input type="text" class="form-control" id="customer-id">
 							</div>
 							<div class="col-md-3">
+								<label for="customer-id" class="form-label">Kategoria</label>
+								<input type="text" class="form-control" id="customer-id">
+							</div>
+							<div class="col-md-3">
 								<label class="invisible">.</label> <!-- Ukryty label dla wyrównania przycisku -->
 								<button type="submit" class="btn btn-primary">Szukaj</button>
 							</div>
@@ -154,6 +158,7 @@
 								<th>Nazwa</th>
 								<th>Cena</th>
 								<th>Ilość</th>
+								<th>Kategoria</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -161,18 +166,19 @@
 							<?php
 							// Przykładowe dane produktów
 							$produkty = array(
-								array(1, "Nazwa Produktu 1", 9.99, 100),
-								array(2, "Nazwa Produktu 2", 19.99, 20),
-								array(3, "Nazwa Produktu 3", 29.99, 34)
+								array(1, "Nazwa Produktu 1", 9.99, 100, "Narzędzia"),
+								array(2, "Nazwa Produktu 2", 19.99, 20, "Narzędzia"),
+								array(3, "Nazwa Produktu 3", 29.99, 34, "Narzędzia")
 							);
 
 							// Wyświetlanie produktów w tabeli
 							foreach ($produkty as $produkt) {
 								echo "<tr>";
 								echo "<td>" . $produkt[0] . "</td>";
-								echo "<td>" . $produkt[1] . "zł</td>";
-								echo "<td>" . $produkt[2] . "</td>";
+								echo "<td>" . $produkt[1] . "</td>";
+								echo "<td>" . $produkt[2] . "zł</td>";
 								echo "<td>" . $produkt[3] . "</td>";
+								echo "<td>" . $produkt[4] . "</td>";
 								echo "<td>
 								<button class='btn btn-primary'>Edytuj</button>
 								<button class='btn btn-danger'>Usuń</button>
@@ -186,6 +192,71 @@
 				<?php
 			}
 			elseif (($_GET['action'] == 'clients')) {
+				?>
+				<h1>Klienci</h1>
+				<form class="mt-4">
+					<div class="row">
+						<div class="col-md-3">
+							<label for="order-id" class="form-label">ID klienta</label>
+							<input type="text" class="form-control" id="order-id">
+						</div>
+						<div class="col-md-3">
+							<label for="customer-id" class="form-label">Imię</label>
+							<input type="text" class="form-control" id="customer-id">
+						</div>
+						<div class="col-md-3">
+							<label for="order-date" class="form-label">Nazwisko</label>
+							<input type="text" class="form-control" id="order-date">
+						</div>
+						<div class="col-md-3">
+							<label for="order-date" class="form-label">Email</label>
+							<input type="text" class="form-control" id="order-date">
+						</div>
+						<div class="col-md-3">
+							<label class="invisible">.</label> <!-- Ukryty label dla wyrównania przycisku -->
+							<button type="submit" class="btn btn-primary">Szukaj</button>
+						</div>
+					</div>
+				</form>
+
+				<!-- Tabela z klientami -->
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Imię</th>
+							<th>Nazwisko</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						// Przykładowe dane klientów
+						$klienci = array(
+							array(1, "John", "Doe", "john@example.com"),
+							array(2, "Jane", "Smith", "jane@example.com"),
+							array(3, "Adam", "Johnson", "adam@example.com")
+						);
+
+						// Filtruj klientów na podstawie wyszukiwania
+						$search = isset($_GET['search']) ? $_GET['search'] : '';
+						$filteredClients = array_filter($klienci, function ($klient) use ($search) {
+							return stripos(implode(' ', $klient), $search) !== false;
+						});
+
+						// Wyświetlanie klientów w tabeli
+						foreach ($filteredClients as $klient) {
+							echo "<tr>";
+							echo "<td>" . $klient[0] . "</td>";
+							echo "<td>" . $klient[1] . "</td>";
+							echo "<td>" . $klient[2] . "</td>";
+							echo "<td>" . $klient[3] . "</td>";
+							echo "</tr>";
+						}
+						?>
+					</tbody>
+				</table>
+				<?php
 			}
 		}
 		else {
