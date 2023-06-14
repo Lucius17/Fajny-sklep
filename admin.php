@@ -56,6 +56,10 @@
 							<input type="text" class="form-control" id="customer-id">
 						</div>
 						<div class="col-md-3">
+							<label for="order-date" class="form-label">Data</label>
+							<input type="date" class="form-control" id="order-date">
+						</div>
+						<div class="col-md-3">
 							<label for="order-status" class="form-label">Status Zamówienia:</label>
 							<select class="form-select" id="order-status">
 								<option value="">Wybierz status</option>
@@ -89,6 +93,7 @@
 							<th>ID</th>
 							<th>ID klienta</th>
 							<th>Status</th>
+							<th>Data</th>
 							<th>Kwota</th>
 						</tr>
 					</thead>
@@ -98,6 +103,7 @@
 								<td><?php echo $order['id']; ?></td>
 								<td><?php echo $order['customer_id']; ?></td>
 								<td><?php echo $order['status']; ?></td>
+								<td><!--Miejsce na datę--></td>
 								<td><?php echo $order['total'];
 									echo "zł"; ?>
 								</td>
