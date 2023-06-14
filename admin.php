@@ -13,7 +13,8 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#">Sklep Internetowy</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
@@ -44,7 +45,7 @@
 		// Sprawdź, czy został wysłany parametr "action"
 		if (isset($_GET['action'])) {
 			if ($_GET['action'] == 'orders') {
-		?>
+				?>
 				<form class="mt-4">
 					<div class="row">
 						<div class="col-md-3">
@@ -100,11 +101,18 @@
 					<tbody>
 						<?php foreach ($orders as $order) { ?>
 							<tr>
-								<td><?php echo $order['id']; ?></td>
-								<td><?php echo $order['customer_id']; ?></td>
-								<td><?php echo $order['status']; ?></td>
+								<td>
+									<?php echo $order['id']; ?>
+								</td>
+								<td>
+									<?php echo $order['customer_id']; ?>
+								</td>
+								<td>
+									<?php echo $order['status']; ?>
+								</td>
 								<td><!--Miejsce na datę--></td>
-								<td><?php echo $order['total'];
+								<td>
+									<?php echo $order['total'];
 									echo "zł"; ?>
 								</td>
 							</tr>
@@ -112,10 +120,75 @@
 					</tbody>
 				</table>
 
-		<?php } elseif ($_GET['action'] == 'home') {
+				<?php
+			}
+			elseif ($_GET['action'] == 'home') {
 				echo '<p>Witaj w panelu administratora sklepu internetowego.</p>';
 			}
-		} else {
+			elseif (($_GET['action'] == 'products')) {
+
+				?>
+				<div class="container">
+					<h1>Produkty</h1>
+					<form class="mt-4">
+						<div class="row">
+							<div class="col-md-3">
+								<label for="order-id" class="form-label">ID Produktu:</label>
+								<input type="text" class="form-control" id="order-id">
+							</div>
+							<div class="col-md-3">
+								<label for="customer-id" class="form-label">Nazwa</label>
+								<input type="text" class="form-control" id="customer-id">
+							</div>
+							<div class="col-md-3">
+								<label class="invisible">.</label> <!-- Ukryty label dla wyrównania przycisku -->
+								<button type="submit" class="btn btn-primary">Szukaj</button>
+							</div>
+						</div>
+					</form>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nazwa</th>
+								<th>Cena</th>
+								<th>Ilość</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							// Przykładowe dane produktów
+							$produkty = array(
+								array(1, "Nazwa Produktu 1", 9.99, 100),
+								array(2, "Nazwa Produktu 2", 19.99, 20),
+								array(3, "Nazwa Produktu 3", 29.99, 34)
+							);
+
+							// Wyświetlanie produktów w tabeli
+							foreach ($produkty as $produkt) {
+								echo "<tr>";
+								echo "<td>" . $produkt[0] . "</td>";
+								echo "<td>" . $produkt[1] . "zł</td>";
+								echo "<td>" . $produkt[2] . "</td>";
+								echo "<td>" . $produkt[3] . "</td>";
+								echo "<td>
+								<button class='btn btn-primary'>Edytuj</button>
+								<button class='btn btn-danger'>Usuń</button>
+								</td>";
+								echo "</tr>";
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+				<?php
+			}
+			elseif (($_GET['action'] == 'clients')) {
+			}
+		}
+		else {
 			// Domyślne wyświetlanie panelu głównego
 			echo '<p>Witaj w panelu administratora sklepu internetowego.</p>';
 		}
